@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Happy Birthday!</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fff4dd;
+        overflow-x: hidden;
+    }
+
+    /* Confetti */
+    .confetti {
+        position: fixed;
+        top: -20px;
+        font-size: 25px;
+        animation: fall linear infinite;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(120vh) rotate(720deg);
+        }
+    }
+
+    /* Birthday card */
+    .card {
+        width: 70%;
+        max-width: 600px;
+        margin: 120px auto;
+        background: pink;
+        padding: 40px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .title {
+        font-size: 48px;
+        font-weight: bold;
+        color: #e63970;
+        margin-bottom: 20px;
+    }
+
+    .message {
+        font-size: 22px;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="title">🎉 Happy Birthday Paati! 🎂</div>
+
+</div>
+
+<script>
+    function createConfetti() {
+        const shapes = ["★", "✦", "✧", "😺"];  // ⭐ ONLY: no circles
+        const colors = ["#ff4d4d", "#4da6ff", "#4dff88", "#ffff66", "#ff66ff", "#ff944d"];
+
+        for (let i = 0; i < 250; i++) {
+            const conf = document.createElement("div");
+            conf.classList.add("confetti");
+
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            conf.textContent = shape;
+
+            // emojis stay default color; stars get colors
+            if (shape !== "😺") {
+                conf.style.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            conf.style.left = Math.random() * 100 + "vw";
+            conf.style.fontSize = (Math.random() * 20 + 15) + "px";
+            conf.style.animationDuration = Math.random() * 3 + 3 + "s";
+            conf.style.animationDelay = Math.random() * 5 + "s";
+
+            document.body.appendChild(conf);
+        }
+    }
+
+    createConfetti();
+</script>
+
+</body>
+</html>
